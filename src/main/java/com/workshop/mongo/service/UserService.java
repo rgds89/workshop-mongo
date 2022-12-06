@@ -1,7 +1,7 @@
 package com.workshop.mongo.service;
 
 import com.workshop.mongo.business.UserBusiness;
-import com.workshop.mongo.domain.User;
+import com.workshop.mongo.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     private UserBusiness userBusiness;
 
-    public List<User> findAllUsers(){
+    public List<UserDto> findAllUsers(){
         return userBusiness.findAllUsers();
     }
 }
