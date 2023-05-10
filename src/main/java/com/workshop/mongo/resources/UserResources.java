@@ -4,6 +4,7 @@ import com.workshop.mongo.dto.UserDto;
 import com.workshop.mongo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +24,10 @@ public class UserResources {
         List<UserDto> users = new ArrayList<>();
         users.addAll(userService.findAllUsers());
         return ResponseEntity.ok().body(users);
+    }
+
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UserDto> findById(@PathVariable String id){
+        return ResponseEntity.ok().body(userService.findById(id));
     }
 }

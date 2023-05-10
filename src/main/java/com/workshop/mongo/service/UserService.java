@@ -15,4 +15,8 @@ public class UserService {
     public List<UserDto> findAllUsers(){
         return userBusiness.findAllUsers();
     }
+
+    public UserDto findById(String id){
+        return userBusiness.findById(id);
+    }
 }
