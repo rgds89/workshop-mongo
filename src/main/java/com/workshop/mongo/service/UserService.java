@@ -28,4 +28,8 @@ public class UserService {
     public void deleteUser(String id){
         userBusiness.deletUser(id);
     }
+
+    public User userUpdate(UserDto userDto, String id){
+        return userBusiness.updateUser(userDto, id);
+    }
 }

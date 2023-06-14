@@ -35,4 +35,15 @@ public class UserBusiness {
         findById(id);
         userRepository.deleteById(id);
      }
+
+     public User updateUser(UserDto userDto, String id){
+        return userRepository.save(buildUser(userDto, id));
+     }
+
+     private User buildUser(UserDto userDto, String id){
+         User user =  findById(id).fromDTO();
+         user.setName(userDto.getName());
+         user.setEmail(userDto.getEmail());
+        return user;
+     }
 }
