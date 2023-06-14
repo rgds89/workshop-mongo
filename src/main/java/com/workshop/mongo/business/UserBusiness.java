@@ -27,4 +27,12 @@ public class UserBusiness {
         UserDto userDto = new UserDto(user);
         return userDto;
     }
+     public User insertUser(User user){
+        return userRepository.insert(user);
+     }
+
+     public void deletUser(String id){
+        findById(id);
+        userRepository.deleteById(id);
+     }
 }

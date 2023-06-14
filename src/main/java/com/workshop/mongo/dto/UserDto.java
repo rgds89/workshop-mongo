@@ -20,4 +20,8 @@ public class UserDto {
         name = obj.getName();
         email = obj.getEmail();
     }
+
+    public User fromDTO(){
+        return new User(id, name, email);
+    }
 }
