@@ -1,5 +1,6 @@
 package com.workshop.mongo.resources;
 
+import com.workshop.mongo.domain.Post;
 import com.workshop.mongo.domain.User;
 import com.workshop.mongo.dto.UserDto;
 import com.workshop.mongo.service.UserService;
@@ -49,5 +50,10 @@ public class UserResources {
         User user = userService.userUpdate(userDto, id);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value="/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        return ResponseEntity.ok().body(userService.findPosts(id));
     }
 }

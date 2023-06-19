@@ -1,6 +1,7 @@
 package com.workshop.mongo.service;
 
 import com.workshop.mongo.business.UserBusiness;
+import com.workshop.mongo.domain.Post;
 import com.workshop.mongo.domain.User;
 import com.workshop.mongo.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,9 @@ public class UserService {
 
     public User userUpdate(UserDto userDto, String id){
         return userBusiness.updateUser(userDto, id);
+    }
+
+    public List<Post> findPosts(String id){
+        return userBusiness.findPosts(id);
     }
 }
