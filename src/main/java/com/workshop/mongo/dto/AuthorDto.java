@@ -10,19 +10,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserDto implements Serializable {
+public class AuthorDto implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
     private String name;
-    private String email;
 
-    public UserDto(User obj) {
-        id = obj.getId();
-        name = obj.getName();
-        email = obj.getEmail();
-    }
-
-    public User fromDTO() {
-        return new User(id, name, email);
+    public AuthorDto(User user) {
+        id = user.getId();
+        name = user.getName();
     }
 }
