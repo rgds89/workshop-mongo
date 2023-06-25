@@ -25,7 +25,8 @@ public class PostBusiness {
 
     public List<PostDto> findByTitleContainning(String text) {
         List<PostDto> postDtos = new ArrayList<>();
-        List<Post> posts = postRepository.findByTitleContainingIgnoreCase(text);
+//        List<Post> posts = postRepository.findByTitleContainingIgnoreCase(text);
+        List<Post> posts = postRepository.searchTitle(text);
 
         posts.forEach(x -> {
             PostDto postDto = new PostDto(x);
