@@ -7,14 +7,31 @@ import com.workshop.mongo.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 @Component
 public class PostBusiness {
     @Autowired
     private PostRepository postRepository;
 
-    public PostDto findById(String id){
+    public PostDto findById(String id) {
         Post post = postRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Registro de post não encontrado"));
         PostDto postDto = new PostDto(post);
         return postDto;
+    }
+
+    public List<PostDto> findByTitleContainning(String text) {
+        List<PostDto> postDtos = new ArrayList<>();
+        List<Post> posts = postRepository.findByTitleContainingIgnoreCase(text);
+
+        posts.forEach(x -> {
+            PostDto postDto = new PostDto(x);
+            postDtos.add(postDto);
+        });
+
+        return postDtos;
     }
 }

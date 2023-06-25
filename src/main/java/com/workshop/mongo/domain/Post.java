@@ -2,7 +2,6 @@ package com.workshop.mongo.domain;
 
 import com.workshop.mongo.dto.AuthorDto;
 import com.workshop.mongo.dto.CommentDto;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -24,15 +23,15 @@ public class Post implements Serializable {
     @Id
     private String id;
     private LocalDate date;
-    private String tile;
+    private String title;
     private String body;
     private AuthorDto author;
     private List<CommentDto> comments = new ArrayList<>();
 
-    public Post(String id, LocalDate date, String tile, String body, AuthorDto author) {
+    public Post(String id, LocalDate date, String title, String body, AuthorDto author) {
         this.id = id;
         this.date = date;
-        this.tile = tile;
+        this.title = title;
         this.body = body;
         this.author = author;
     }
