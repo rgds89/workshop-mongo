@@ -7,6 +7,7 @@ import com.workshop.mongo.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -27,6 +28,18 @@ public class PostBusiness {
         List<PostDto> postDtos = new ArrayList<>();
 //        List<Post> posts = postRepository.findByTitleContainingIgnoreCase(text);
         List<Post> posts = postRepository.searchTitle(text);
+
+        posts.forEach(x -> {
+            PostDto postDto = new PostDto(x);
+            postDtos.add(postDto);
+        });
+
+        return postDtos;
+    }
+
+    public List<PostDto> anySearch(String text, LocalDate minDate, LocalDate maxDate) {
+        List<PostDto> postDtos = new ArrayList<>();
+        List<Post> posts = postRepository.anySearch(text, minDate, maxDate);
 
         posts.forEach(x -> {
             PostDto postDto = new PostDto(x);
